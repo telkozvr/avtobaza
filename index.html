@@ -15,38 +15,42 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
+	<!-- Навигация -->
 	<nav class="col-md-12 ">
 		<div class="container">
 			<div class="row">
 			<ul class="list-inline col-md-12">
-				<a href="http://goravtobaza.ru/index.html"><li "> <img src="img/logo.png"></li></a>
-				<a href="#"><li class="col-md-2">Главная</li></a>
-				<a href="#"><li class="col-md-2">О проекте</li></a>
-				<a href="#"><li class="col-md-2">Помощь</li></a>
-				<a href="#"><li class="col-md-2">Подать объявление</li></a>
+				<a href="http://goravtobaza.ru/index.html"><li "> <img src="img/logo.png" alt="logo"></li></a>
+				<a href="#"><li class="col-md-2 btn btn-outline-light">Главная</li></a>
+				<a href="#"><li class="col-md-2 btn btn-outline-light">О проекте</li></a>
+				<a href="#"><li class="col-md-2 btn btn-outline-light">Помощь</li></a>
+				<a href="#"><li class="col-md-2 btn btn-outline-light">Подать объявление</li></a>
 			</ul>
 			</div>
 		</div>
 	</nav>
-
+	
+	<!--Заголовки -->
 	<header>
 		<div class="container">
 			<div class="row">
-				<h1>Аренда спецтехники и автотранспорта, пассажирские и грузоперевозки.</h1>
-				<h2>ГОРАВТОБАЗА - сайт бесплатных объявлений частных лиц, предпринимателей и компаний
+				<h1 class="col-md-10">Аренда спецтехники и автотранспорта, пассажирские и грузоперевозки.</h1>
+				<h2 class="col-md-10">ГОРАВТОБАЗА - сайт бесплатных объявлений частных лиц, предпринимателей и компаний
 об аренде спецтехники и услугах автотранспорта во всех городах России, Украины и Беларуси.</h2>
 			</div>
 		</div>
-	</header>
-	
-	<div class="container">
-		<div class="row">
-			<input class="col-md-5" type="text" name="city">
-			<input type="submit" name="poisk">
-			<img  src="img/index_img.png">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 wrapper">
+					<input class="col-md-9 form-control text-center" id="city" type="text" name="city" placeholder="Введите город"> 
+					<input class="col-md-3 btn btn-warning" type="submit" name="poisk" value="Найти">
+				</div>
+				<div>
+					<img src="img/index_img.png" alt="img">
+				</div>
+			</div>
 		</div>
-	</div>
-
+</header>
 	<main>
 		<div class="container">
 			<div class="row">
@@ -66,7 +70,6 @@
 	<div class="container" id="content">
 		<article>
 			<h3>Роль спецтехники и автотранспорта в современном мире.</h3>
-	<br>
 	<p>&nbsp;&nbsp;С момента изобретения двигателя внутреннего сгорания и до сегодняшних дней развитие
 	 автомобильного транспорта шагнуло далеко вперёд и достигло неимоверных высот. В настоящее время
 	  ни одно крупное или мелкое строительство, ни одна отрасль промышленности и сельского хозяйства не обходится без использования спецтехники и автотранспорта. 
@@ -104,7 +107,6 @@
 			</article>
 			<article
 			><h3>Что такое аренда спецтехники и автотранспорта?</h3>
-	<br>
 	<p>&nbsp;&nbsp;Аренда спецтехники и автотранспорта - это услуги  по грузоперевозкам, по доставке бетона,
 	 щебня, песка, кирпича, газосиликата, железобетонных изделий и других стройматериалов, услуги крана и экскаватора,
 	  аренда манипулятора и автовышки, аренда специальной, дорожной, строительной и автомобильной техники. 
@@ -115,8 +117,6 @@
 	(к святым местам, в курортные зоны, заказ автомобиля на свадьбу, в аэропорт) до строительства жилых домов 
 	и крупных торговых центров. Ведь бывают периоды, когда даже у солидных компаний возникают проблемы с нехваткой 
 	различных транспортных средств и спецтехники,  и они вынуждены обращаться к сторонним фирмам.  Но, как и где их найти, если время ограничено?  </p>
-	<br>
-
 		</article>
 			<article>
 				<h3>Инструменты поиска спецтехники и автотранспорта.</h3>
@@ -128,7 +128,6 @@
 			</article>
 			<article>
 				<h3>Куда подать объявление об аренде спецтехники и автотранспорта?</h3>
-	<br>
 	<p>&nbsp;&nbsp;Портал Горавтобаза призван помочь не только нанимателям,  в первую очередь он облегчит поиск потенциальных
 	 клиентов арендодателям. Представьте, что Вы лично или Ваша компания купили экскаватор или автокран, автовышку, бульдозер и хотели бы использовать его без простоя
 	 не только на своих объектах, но и сдавать в аренду. Или быть может, Вы решили открыть собственный бизнес по сдаче в аренду спецтехники! 
@@ -140,21 +139,22 @@
 	<br>
 	<h3>GorAvtoBaza.ru:  авто, спецтехника – всё тут!</h3>
 		</article>
-			<div class="row statistic">
+			<div class="col row statistic">
 		<p>Всего объявлений на сайте - $kol-vo_obyavlenij, в $kol-vo_regionov регионах. </p>
 		</div>
 	</div>
 
 	<footer>
 		<div class="container">
-		<p>&nbsp;&nbsp;©&nbsp;&nbsp;&nbsp;Copyright:&nbsp;<a href="http://goravtobaza.ru/" class="ahover1">GorAvtoBaza.ru</a>&nbsp;2014–2016&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span> <a href="http://goravtobaza.ru/kontakty/send" class="ahover1">Контакты</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="http://goravtobaza.ru/soglashenie" class="ahover1">Условия использования</a>
-</span></p>    
+			<p>&nbsp;&nbsp;©&nbsp;&nbsp;&nbsp;Copyright:&nbsp;<a href="http://goravtobaza.ru/" class="ahover1">GorAvtoBaza.ru</a>&nbsp;2014–2016&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span> <a href="http://goravtobaza.ru/kontakty/send" class="ahover1">Контакты</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://goravtobaza.ru/soglashenie" class="ahover1">Условия использования</a>
+		</span></p>    
 		</div>  
 	</footer>
-</div>
+
+
 </body>
 </html>
