@@ -26,7 +26,7 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["email"]) {
     $user_login = mysqli_query($link, $zapros_poemail);
     // Данные из БД переводятся в массив
     $dannye = mysqli_fetch_assoc($user_login);
-    $email_bd = $danny["user_email"];
+    $email_bd = $dannye["user_email"];
     // Достаём хеш для шифрования текущего пароля
     $hash_bd = $dannye["user_hash"];
     $hashparol_bd = $dannye["user_parol"];
@@ -37,17 +37,17 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["email"]) {
         //Пишем в сессию информацию о том, что мы авторизовались:
         $_SESSION["auth"] = true;
         // Пишем в сессию логин и id пользователя
-        $_SESSION["email"] = $dannye["user_email"];
+        $_SESSION["email"] = $email_bd;
 
         if(!empty($_REQUEST["zapomnit"])) {
             $key = md5(generateHash(10));
-            setcookie("email", $dannye["email"], time()+60*60*24*30*12); //Логин
+            setcookie("email", $email_bd, time()+60*60*24*30*12); //Логин
             setcookie("key", $key, time()+60*60*24*30*12);
-            $izmenit_coockie = 'UPDATE users SET cookie="'.$key.'" WHERE user_email="'.$email.'"';
+            $izmenit_coockie = 'UPDATE users SET cookie="'.$key.'" WHERE user_email="'.$email_bd.'"';
             mysqli_query($link, $izmenit_coockie);
         }
         // Переводим в личный кабинет
-       header("Location: /index.html"/*.$dannye["user_id"]*/); exit();
+      header("Location: /index.html"/*.$dannye["user_id"]*/); exit();
     }
     else
     {
