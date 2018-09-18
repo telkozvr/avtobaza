@@ -20,7 +20,7 @@ require_once "podklyuchenie_k_bd.php";
     //Код работает
     // Переменные длины почты
     $min_dlina_email = 8; //Минимум
-    $max_dlina_email = 30; //Максимум
+    $max_dlina_email = 40; //Максимум
     // Переменные длины пароля
     $min_dlina_parolya = 8;
     $max_dlina_parolya = 30;
@@ -36,24 +36,32 @@ require_once "podklyuchenie_k_bd.php";
     // Если была нажата кнопка формы
     if(isset($_REQUEST["submit"])) {
         // Сделать галочку при которой поле становится неактивным
-    //Проверка заполненности
-	if(!$email or !$phone) {
-        $err[] = "Введите почту либо номер телефона!";
+    //Проверка заполненности почты или номера
+	if(!$email && !$phone) {
+        $err[] = "Введите почту либо номер телефона для дальнейшей регистрации";
     }
-    // Убирать все символы, кроме цифр
 
-    // Проверка длины
+    // Проверка почты
     if(strlen($email) < $min_dlina_email or strlen($email) > $max_dlina_email) {
         $err[] = "Почта должна быть не меньше $min_dlina_email символов и не больше $max_dlina_email";
     } 
     // Присваиваем переменной количество юзеров с указанной в форме почтой
     // Сделать такую же проверку для номера телефона
-    $user = mysqli_query($link, "SELECT user_id FROM users WHERE user_email='".mysqli_real_escape_string($link, $email)."'");
+    $email_bd = mysqli_query($link, "SELECT user_id FROM users WHERE user_email='".mysqli_real_escape_string($link, $email)."'");
     // Если число рядов идентичных user в базе больше 0, то такой юзер уже существует
-    if(mysqli_num_rows($user) > 0) {
+    if(mysqli_num_rows($email_bd) > 0) {
         $err[] = "Пользователь с такой почтой уже существует в базе данных";
     }
     
+    //Проверка номера
+    $phone_bd = mysqli_query($link, "SELECT user_id FROM users WHERE user_phone='".mysqli_real_escape_string($link, $phone)."'");
+    // Если число рядов идентичных user в базе больше 0, то такой юзер уже существует
+    if(mysqli_num_rows($phone_bd) > 0) {
+        $err[] = "Пользователь с таким номером уже существует в базе данных";
+    }
+
+
+    //Проверка пароля
     if(!$parol){
          $err[] = "Введите пароль!";
     }
@@ -77,7 +85,7 @@ require_once "podklyuchenie_k_bd.php";
         // Окончательный пароль, состоящий из пароля+хеша
         $hashparol = md5($parol.$hash);
         //Добавить в таблицу с юзерами шифрованный пароль, почту и хеш для дальнейшей расшифровки
-        mysqli_query($link," INSERT INTO users SET user_email='".$email."', user_phone='".$phone."' , user_parol='".$hashparol."', user_hash='".$hash."', user_data ='".$date."' " );
+        mysqli_query($link," INSERT INTO users SET user_email='".$email."', user_phone='".$phone."', user_parol='".$hashparol."', user_hash='".$hash."', user_date='".$date."' " );
         //Отравить письмо об успешной регистрации
         require_once "mail_register.php";
         //Перейти на страницу с логином
