@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +37,70 @@
 				</h2>
 			</div>
 			<div class="row">
-			<a href="vhod.php" class="col-xl-5">	<input class="col-xl-12 btn btn-warning" type="button" name="vhod" value="Вход"> </a>
-			<a href="registraciya.php" class="col-xl-5 offset-lg-2">	<input class="col-xl-12 btn btn-warning" type="button" name="registraciya" value="Регистрация"> </a>
+			<!-- <a href="vhod.php" class="col-xl-5">	<input class="col-xl-12 btn btn-warning" type="button" name="vhod" value="Вход"> </a> -->
+            <!-- Button trigger modal -->
+<button class="col-xl-5 btn btn-warning" type="button" data-toggle="modal" data-target="#exampleModal">
+  Вход
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form method="POST" action="vhod.php">
+                <div class="form-group, offset-md-1">
+                    <p> <label for="email"> Email: </p> </label>  <input class="form-control col-xl-11" name="email" type="email" id="email"><br>
+                    <p> <label for="phone"> Номер телефона: </p> </label>  <input class="form-control col-xl-11" name="phone" type="tel" id="phone" ><br>
+                    <p> <label for="parol">  Пароль: </p> </label> <input class="form-control col-xl-11" name="parol" type="password" id="parol" required><br>
+                   <p> <input type="checkbox" name="zapomnit"> </p>
+                   <p> <input class="btn btn-warning small col-xl-8 offset-xl-2" name="submit" type="submit" value="Войти"> </p>
+                </div>
+             </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+			<!-- Button trigger modal -->
+<button class="col-xl-5 offset-lg-2 btn btn-warning" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+  Регистрация
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="registraciya.php">
+            <div class="form-group, offset-md-1">
+            <p> <label for="email_reg"> Email: </p> </label>  <input class="form-control col-xl-11" name="email" type="email" id="email_reg" required><br>
+            <p> <label for="phone_reg"> Номер телефона </p> </label>  <input class="form-control col-xl-11" name="phone" type="tel" id="phone_reg" required><br>
+            <p> <label for="parol_reg">  Пароль: </p> </label> <input class="form-control col-xl-11" name="parol" type="password" id="parol_reg" required><br>
+            <p> <label for="povtor_parol_reg"> Повторите ваш пароль: </p> </label> <input class="form-control col-xl-11" name="povtor_parol" type="password" id="povtor_parol_reg" required><br>
+        <!--    <p> <label for="captcha"> Введите капчу: </label> </p>
+            <p> <img src="captcha.php" alt="Капча"/> </p> 
+            <p> <input type="text" name="captcha" id="captcha" placeholder="Проверочный код" required> </p> 
+           <input type="checkbox" name="zapomnit"> -->
+            <p> <input class="btn btn-warning small col-xl-8 offset-xl-2" name="submit" type="submit" value="Зарегистрироваться"> </p>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+			<!-- <a class="col-xl-5 offset-lg-2">	<input class="col-xl-12 btn btn-warning" type="button" name="registraciya" value="Регистрация"> </a> -->
 			</div>
 		</div>
 	</main>
@@ -53,6 +116,8 @@
 </p>
 		</article>
 	</div>
+
+
 
 	<footer>
 		<div class="container">

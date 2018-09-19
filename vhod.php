@@ -40,7 +40,8 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["email"]) {
         $_SESSION["email"] = $email_bd;
 
         if(!empty($_REQUEST["zapomnit"])) {
-            $key = md5(generateHash(10));
+            $random = rand(6,10);
+            $key = md5(generateHash($random));
             setcookie("email", $email_bd, time()+60*60*24*30*12); //Логин
             setcookie("key", $key, time()+60*60*24*30*12);
             $izmenit_coockie = 'UPDATE users SET cookie="'.$key.'" WHERE user_email="'.$email_bd.'"';
@@ -114,15 +115,7 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["phone"]) {
         </div>
     </nav>
 
-	<form class="row" method="POST">
-        <div class="form-group, col-sm-2, offset-md-5">
-    		<p> <label for="email"> Email: </p> </label>  <input class="form-control" name="email" type="email" id="email" ><br>
-            <p> <label for="phone"> Номер телефона: </p> </label>  <input class="form-control" name="phone" type="tel" id="phone" ><br>
-    		<p> <label for="parol">  Пароль: </p> </label> <input class="form-control" name="parol" type="password" id="parol" required><br>
-            <input type="checkbox" name="zapomnit">
-    		<input class="btn btn-warning" name="submit" type="submit" value="Войти">
-        </div>
-	</form>
+
 
 </body>
 </html>
