@@ -1,10 +1,11 @@
 <?php 
 session_start();
-if($_SESSION["auth"] = true){
- header("Location: /lichniy_kabinet.html");
+if(!empty($_SESSION["auth"]) && $_SESSION["auth"] = true){
+ header("Location: /lichnyj_kabinet.php");
+} else if ($_SESSION["auth"] = 0) {
+  header("Location: /registraciya_ili_vhod.php");
 }
-echo"всё рабит";
-require_once "vhod_proverka.php";
+print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,7 @@ require_once "vhod_proverka.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
+
 <body>
 
 	<!-- Навигация -->
@@ -25,8 +27,8 @@ require_once "vhod_proverka.php";
 		<div class="container">
 			<div class="row">
 			<ul class="list-inline col-md-12">
-				<a href="http://goravtobaza.ru/index.html"><li "> <img class="img-responsive" src="img/logo.png" alt="logo"></li></a>
-				<a href="http://goravtobaza.ru/index.html"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">Главная</li></a>
+				<a href="http://goravtobaza.ru/index.php"><li "> <img class="img-responsive" src="img/logo.png" alt="logo"></li></a>
+				<a href="http://goravtobaza.ru/index.php"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">Главная</li></a>
 				<a href="#"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">О проекте</li></a>
 				<a href="#"><li class="col-xl-2 col-lg-3 col-sm-12 offset-xl-0 offset-lg-5 btn btn-outline-light">Помощь</li></a>
 				<a href="http://goravtobaza.ru/registraciya_ili_vhod.html"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">Подать объявление</li></a>

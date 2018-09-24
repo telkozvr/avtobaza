@@ -3,21 +3,10 @@
 // Подключения модуля соединения с БД
 require_once "podklyuchenie_k_bd.php";
 
-    function generateHash() {
-    // Символы для формирования строки
-    $simvoly = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
-    // Пустая строка для записи сгенерированных символов
-    $code = "";
-    //Предел выбираемых символов
-    $kolichestvo_simvolov = strlen($simvoly) - 1;
-    // Цикл генерации строки
-    while (strlen($code) < $length) {
-            $code .= $simvoly[mt_rand(0, $kolichestvo_simvolov)];
-    }
-    return $code;
-}
+require_once "functions.php";
 //Авторизация по почте
 if (isset($_REQUEST["submit"]) && $_REQUEST["email"]) {
+
     // Получаем пароль из формы
     $parol_form = $_REQUEST["parol"];
     // Запрос айди, пароля, хеша и почты, почта которых равна введённой в форму
@@ -26,21 +15,27 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["email"]) {
     $user_login = mysqli_query($link, $zapros_poemail);
     // Данные из БД переводятся в массив
     $dannye = mysqli_fetch_assoc($user_login);
+    //Айди из базы
+    $id_bd = $dannye["user_id"];
+    // Почта из бд 
     $email_bd = $dannye["user_email"];
     // Достаём хеш для шифрования текущего пароля
     $hash_bd = $dannye["user_hash"];
+    //Хешированный пароль из базы
     $hashparol_bd = $dannye["user_parol"];
+    //Хешируем пароль из формы
     $hashparol_form = md5($parol_form.$hash_bd);
     // Сравниваем пароли из БД и из формы авторизации
     if ($hashparol_bd === $hashparol_form) { 
-        session_start(); 
+        session_start();
         //Пишем в сессию информацию о том, что мы авторизовались:
         $_SESSION["auth"] = true;
         // Пишем в сессию логин и id пользователя
         $_SESSION["email"] = $email_bd;
+        $_SESSION["id"] = $id_bd;
 
         if(!empty($_REQUEST["zapomnit"])) {
-            $random = rand(6,10);
+            $random = mt_rand(6,10);
             $key = md5(generateHash($random));
             setcookie("email", $email_bd, time()+60*60*24*30*12); //Логин
             setcookie("key", $key, time()+60*60*24*30*12);
@@ -48,7 +43,7 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["email"]) {
             mysqli_query($link, $izmenit_coockie);
         }
         // Переводим в личный кабинет
-      header("Location: /index.html"/*.$dannye["user_id"]*/); exit();
+      header("Location: /lichnyj_kabinet.php"/*.$dannye["user_id"]*/); exit();
     }
     else
     {
@@ -114,8 +109,18 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["phone"]) {
             </div>
         </div>
     </nav>
-
-
+<?php 
+echo "<p> Вам на почту было отправлено письмо со ссылкой подтверждения аккаунта </p>";
+ ?>
+            <form method="POST" action="vhod.php">
+                <div class="form-group, offset-md-1">
+                    <p> <label for="email"> Email: </p> </label>  <input class="form-control col-xl-11" name="email" type="email" id="email"><br>
+                    <p> <label for="phone"> Номер телефона: </p> </label>  <input class="form-control col-xl-11" name="phone" type="tel" id="phone" ><br>
+                    <p> <label for="parol">  Пароль: </p> </label> <input class="form-control col-xl-11" name="parol" type="password" id="parol" required><br>
+                   <p> Запомнить меня: <input type="checkbox" name="zapomnit"> </p>
+                   <p> <input class="btn btn-warning small col-xl-9 offset-xl-1" name="submit" type="submit" value="Войти"> </p>
+                </div>
+             </form>
 
 </body>
 </html>
