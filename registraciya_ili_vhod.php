@@ -1,11 +1,8 @@
 <?php 
 session_start();
-if(!empty($_SESSION["auth"]) && $_SESSION["auth"] = true){
+if(!empty($_SESSION["auth"]) && $_SESSION["auth"] == true){
  header("Location: /lichnyj_kabinet.php");
-} else if ($_SESSION["auth"] = 0) {
-  header("Location: /registraciya_ili_vhod.php");
 }
-print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +20,7 @@ print_r($_SESSION);
 <body>
 
 	<!-- Навигация -->
-	<nav class="col-md-12 ">
+	<nav class="col-md-12">
 		<div class="container">
 			<div class="row">
 			<ul class="list-inline col-md-12">
@@ -91,10 +88,10 @@ print_r($_SESSION);
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="registraciya.php">
+        <form method="POST" action="registraciya_new.php">
             <div class="form-group, offset-md-1">
-            <p> <label for="email_reg"> Email: </p> </label>  <input class="form-control col-xl-11" name="email" type="email" id="email_reg" required><br>
-            <p> <label for="phone_reg"> Номер телефона </p> </label>  <input class="form-control col-xl-11" name="phone" type="tel" id="phone_reg" required><br>
+            <p> <label for="email_reg"> Email: </p> </label>  <input class="form-control col-xl-11" name="email" type="email" id="email_reg"><br>
+            <p> <label for="phone_reg"> Номер телефона </p> </label>  <input class="form-control col-xl-11" name="phone" type="tel" id="phone_reg"><br>
             <p> <label for="parol_reg">  Пароль: </p> </label> <input class="form-control col-xl-11" name="parol" type="password" id="parol_reg" required><br>
             <p> <label for="povtor_parol_reg"> Повторите ваш пароль: </p> </label> <input class="form-control col-xl-11" name="povtor_parol" type="password" id="povtor_parol_reg" required><br>
         <!--    <p> <label for="captcha"> Введите капчу: </label> </p>

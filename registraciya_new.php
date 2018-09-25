@@ -2,7 +2,6 @@
 // Страница регистрации
 // Подключения модуля соединения с БД 
 require_once "podklyuchenie_k_bd.php";
-session_start();
 require_once "functions.php";
     //Код работает
     // Переменные длины почты
@@ -23,44 +22,13 @@ require_once "functions.php";
     $phone = preg_replace('~[^0-9]+~','', $phone);
     // Массив для ошибок
     $err = array();
+
     // Если была нажата кнопка формы
     if(isset($_REQUEST["submit"])) {
         // Сделать галочку при которой поле становится неактивным
-    //Проверка заполненности почты или номера
-	if(!$email && !$phone) {
-        $err[] = "Введите почту либо номер телефона для дальнейшей регистрации";
-    }
-
-    // Проверка почты
-    if(strlen($email) < $min_dlina_email or strlen($email) > $max_dlina_email) {
-        $err[] = "Почта должна быть не меньше $min_dlina_email символов и не больше $max_dlina_email";
-    } 
-    // Присваиваем переменной количество юзеров с указанной в форме почтой
-    // Сделать такую же проверку для номера телефона
-    $email_bd = mysqli_query($link, "SELECT user_id FROM users WHERE user_email='".mysqli_real_escape_string($link, $email)."'");
-    // Если число рядов идентичных user в базе больше 0, то такой юзер уже существует
-    if(mysqli_num_rows($email_bd) > 0) {
-        $err[] = "Пользователь с такой почтой уже существует в базе данных";
-    }
-    
-    //Проверка номера
-    $phone_bd = mysqli_query($link, "SELECT user_id FROM users WHERE user_phone='".mysqli_real_escape_string($link, $phone)."'");
-    // Если число рядов идентичных user в базе больше 0, то такой юзер уже существует
-    if(mysqli_num_rows($phone_bd) > 0) {
-        $err[] = "Пользователь с таким номером уже существует в базе данных";
-    }
-
-    //Проверка пароля
-    if(!$parol){
-         $err[] = "Введите пароль!";
-    }
-    // Сделать аяксом без перезагрузки
-    if($parol != $povtor_parol){
-        $err[] = "Пароли не совпадают";
-    }
-    if(strlen($parol) < $min_dlina_parolya or strlen($parol) > $max_dlina_parolya) {
-        $err[] = "Пароль должен быть не меньше $min_dlina_parolya символов и не больше $max_dlina_parolya";
-    }
+        checkEmail($email);
+        checkPhone($phone);
+        checkParol($parol);
 
     // Добавить серверную валидацию пароля с регулярками
     // Модуль проверки капчи
@@ -76,14 +44,14 @@ require_once "functions.php";
         $hashparol = md5($parol.$hash);
         //Добавить в таблицу с юзерами шифрованный пароль, почту и хеш для дальнейшей расшифровки
         mysqli_query($link," INSERT INTO users SET user_email='".$email."', user_phone='".$phone."', user_parol='".$hashparol."', user_hash='".$hash."', user_date='".$date."', user_status='".$status."' " );
-        if(!empty($email)){
+     /*   if(!empty($email)) {
         //Отравить письмо с подтверждением почты
         require_once "mail_register.php";
         echo "<p> Вам на почту было отправлено письмо со ссылкой подтверждения аккаунта </p>";
-        } else if (!empty($phone)){
+        } else if (!empty($phone)) {
             // Отправить смс с подтверждением телефона
             header("Location: vhod.php"); exit();
-        }
+        } */
     }
     //Либо вывести ошибку
     else

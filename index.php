@@ -2,9 +2,7 @@
 session_start();
 require_once "podklyuchenie_k_BD.php";
 require_once "vhod_proverka.php";
-print_r($_SESSION);
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +22,7 @@ print_r($_SESSION);
 <body>
 
 	<!-- Навигация -->
-	<nav class="col-md-12 ">
+	<nav class="col-md-12">
 		<div class="container">
 			<div class="row">
 			<ul class="list-inline col-md-12">
