@@ -1,16 +1,25 @@
 <?php
     session_start();
-    // Генерируется случайное число
+    // Генерируем случайное число.
     $rand = mt_rand(10000, 99999);
-    // Сгенерированная строка сохраняется в сессию
+ 
+    // Сохраняем значение переменной  $rand в сессию
     $_SESSION["rand"] = $rand;
-    //Создаётся фон
-    $fon = imageCreateTrueColor(150,75);
-    // Генерируется случайный цвет текста
-    $tekst = imageColorAllocate($fon, mt_rand(0,230), mt_rand(0,230), mt_rand(0,230));
+ 
+    //создаём новое черно-белое изображение
+    $im = imageCreateTrueColor(100,50);
+ 
+    // Указываем белый цвет для текста
+    $c = imageColorAllocate($im, 255, 255, 255);
+ 
     // Записываем полученное случайное число на изображение
-    imageTtfText($fon, 20, mt_rand(-10, 25), 20, 50, $tekst, "fonts/verdana.ttf", $rand);
+    imageTtfText($im, 20, -10, 10, 30, $c, "fonts/verdana.ttf", $rand);
+ 
     header("Content-type: image/png");
+ 
     // Выводим изображение
-    imagePng($fon);
+    imagePng($im);
+ 
+    //Освобождаем ресурсы
+    imageDestroy($im);
 ?>
