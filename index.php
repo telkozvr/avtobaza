@@ -2,6 +2,7 @@
 session_start();
 require_once "podklyuchenie_k_BD.php";
 require_once "vhod_proverka.php";
+require_once "proverka_email.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,7 @@ require_once "vhod_proverka.php";
 		<div class="container">
 			<div class="row">
 			<ul class="list-inline col-md-12">
-				<a href="http://goravtobaza.ru/index.php"><li "> <img class="offset-lg-0 offset-sm-4 img-responsive" src="img/logo.png" alt="logo"></li></a>
+				<a href="http://goravtobaza.ru/index.php"><li "> <img class="offset-lg-0 offset-md-6 offset-sm-4 img-responsive" src="img/logo.png" alt="logo"></li></a>
 				<a href="http://goravtobaza.ru/index.php"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">Главная</li></a>
 				<a href="#"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">О проекте</li></a>
 				<a href="#"><li class="col-xl-2 col-lg-3 col-sm-12 offset-xl-0 offset-lg-5 btn btn-outline-light">Помощь</li></a>
@@ -52,7 +53,7 @@ require_once "vhod_proverka.php";
 					<input class="col-md-3 btn btn-warning" type="submit" name="poisk" value="Найти">
 				</div>
 				<div>
-					<img class="img-responsive" src="img/index_img.png" alt="img">
+					<img class="img-responsive d-none d-md-block" src="img/index_img.png" alt="img">
 				</div>
 			</div>
 		</div>
@@ -61,15 +62,247 @@ require_once "vhod_proverka.php";
 <!-- Блок с городами -->
 	<main>
 		<div class="container">
-			<div class="row">
+			<div class="row subjects" id="subjects">
 				<div class="col-md-4">
-					<a href="#"> <p> testcity	</p> </a>
+					<h2 style="color:#808080;">Россия</h2> <br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_adygeya" class="ahover">Адыгея республика</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_altaj" class="ahover">Алтай республика</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/altajskij_kraj" class="ahover">Алтайский край</a>
+<span class="cvet1"> - 7</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/amurskaya_oblast" class="ahover">Амурская область</a>
+<span class="cvet1"> - 12</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/arkhangelskaya_oblast" class="ahover">Архангельская область</a>
+<span class="cvet1"> - 22</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/astrakhanskaya_oblast" class="ahover">Астраханская область</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_bashkortostan" class="ahover">Башкортостан республика</a>
+<span class="cvet1"> - 89</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/belgorodskaya_oblast" class="ahover">Белгородская область</a>
+<span class="cvet1"> - 72</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/bryanskaya_oblast" class="ahover">Брянская область</a>
+<span class="cvet1"> - 33</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_buryatiya" class="ahover">Бурятия республика</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/vladimirskaya_oblast" class="ahover">Владимирская область</a>
+<span class="cvet1"> - 44</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/volgogradskaya_oblast" class="ahover">Волгоградская область</a>
+<span class="cvet1"> - 33</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/vologodskaya_oblast" class="ahover">Вологодская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/voronezhskaya_oblast" class="ahover">Воронежская область</a>
+<span class="cvet1"> - 65</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_dagestan" class="ahover">Дагестан республика</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/evrejskaya_avtonomnaya_oblast" class="ahover">Еврейская автономная обл.</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/zabajkalskij_kraj" class="ahover">Забайкальский край</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/ivanovskaya_oblast" class="ahover">Ивановская область</a>
+<span class="cvet1"> - 9</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_ingushskaya" class="ahover">Ингушская республика</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/irkutskaya_oblast" class="ahover">Иркутская область</a>
+<span class="cvet1"> - 6</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_kabardino_balkarskaya" class="ahover">Кабардино-Балкарская респ.</a>
+<span class="cvet1"> - 4</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kaliningradskaya_oblast" class="ahover">Калининградская область</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_kalmykiya" class="ahover">Калмыкия республика</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kaluzhskaya_oblast" class="ahover">Калужская область</a>
+<span class="cvet1"> - 7</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kamchatskij_kraj" class="ahover">Камчатский край</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/karachaevo_cherkesskaya_respublika" class="ahover">Карачаево-Черкесская респ.</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_kareliya" class="ahover">Карелия республика</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kemerovskaya_oblast" class="ahover">Кемеровская область</a>
+<span class="cvet1"> - 7</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kirovskaya_oblast" class="ahover">Кировская область</a>
+<span class="cvet1"> - 15</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_komi" class="ahover">Коми республика</a>
+<span class="cvet1"> - 3</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kostromskaya_oblast" class="ahover">Костромская область</a>
+<span class="cvet1"> - 6</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/krasnodarskij_kraj" class="ahover">Краснодарский край</a>
+<span class="cvet1"> - 69</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/krasnoyarskij_kraj" class="ahover">Красноярский край</a>
+<span class="cvet1"> - 8</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/avtonomnaya_respublika_krym" class="ahover"><b>Крым автономная респуб.</b></a>
+<span class="cvet1"> - 53</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kurganskaya_oblast" class="ahover">Курганская область</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kurskaya_oblast" class="ahover">Курская область</a>
+<span class="cvet1"> - 8</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/leningradskaya_oblast" class="ahover">Ленинградская область</a>
+<span class="cvet1"> - 13</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/lipetskaya_oblast" class="ahover">Липецкая область</a>
+<span class="cvet1"> - 72</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/magadanskaya_oblast" class="ahover">Магаданская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_marij_el" class="ahover">Марий эл республика</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_mordoviya" class="ahover">Мордовия республика</a>
+<span class="cvet1"> - 2</span><br>
 				</div>
+
 				<div class="col-md-4">
-					<a href="#"> <p> testcity	</p> </a>
+&nbsp;<a href="http://goravtobaza.ru/regiony/moskva" class="ahover"><span style="font-size:20px;"><b>Москва</b></span></a>
+<span class="cvet1"> - 569</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/moskovskaya_oblast" class="ahover">Московская область</a>
+<span class="cvet1"> - 162</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/murmanskaya_oblast" class="ahover">Мурманская область</a>
+<span class="cvet1"> - 8</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/nenetskij_avtonomnyj_okrug" class="ahover">Ненецкий автономный округ</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/nizhegorodskaya_oblast" class="ahover">Нижегородская область</a>
+<span class="cvet1"> - 88</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/novgorodskaya_oblast" class="ahover">Новгородская область</a>
+<span class="cvet1"> - 11</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/novosibirskaya_oblast" class="ahover">Новосибирская область</a>
+<span class="cvet1"> - 30</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/omskaya_oblast" class="ahover">Омская область</a>
+<span class="cvet1"> - 12</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/orenburgskaya_oblast" class="ahover">Оренбургская область</a>
+<span class="cvet1"> - 9</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/orlovskaya_oblast" class="ahover">Орловская область</a>
+<span class="cvet1"> - 6</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/penzenskaya_oblast" class="ahover">Пензенская область</a>
+<span class="cvet1"> - 3</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/permskij_kraj" class="ahover">Пермский край</a>
+<span class="cvet1"> - 17</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/primorskij_kraj" class="ahover">Приморский край</a>
+<span class="cvet1"> - 10</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/pskovskaya_oblast" class="ahover">Псковская область</a>
+<span class="cvet1"> - 8</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/rostovskaya_oblast" class="ahover">Ростовская область</a>
+<span class="cvet1"> - 50</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/ryazanskaya_oblast" class="ahover">Рязанская область</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/samarskaya_oblast" class="ahover">Самарская область</a>
+<span class="cvet1"> - 33</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/sankt_peterburg" class="ahover"><span style="font-size:20px;"><b>Санкт-Петербург</b></span></a>
+<span class="cvet1"> - 355</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/saratovskaya_oblast" class="ahover">Саратовская область</a>
+<span class="cvet1"> - 20</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/sakhalinskaya_oblast" class="ahover">Сахалинская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/sverdlovskaya_oblast" class="ahover">Свердловская область</a>
+<span class="cvet1"> - 188</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/sevastopol" class="ahover"><b>Севастополь</b></a>
+<span class="cvet1"> - 7</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_severnaya_osetiya_alaniya" class="ahover">Северная Осетия-Алания</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/smolenskaya_oblast" class="ahover">Смоленская область</a>
+<span class="cvet1"> - 10</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/stavropolskij_kraj" class="ahover">Ставропольский край</a>
+<span class="cvet1"> - 8</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/tambovskaya_oblast" class="ahover">Тамбовская область</a>
+<span class="cvet1"> - 10</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_tatarstan" class="ahover">Татарстан республика</a>
+<span class="cvet1"> - 34</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/tverskaya_oblast" class="ahover">Тверская область</a>
+<span class="cvet1"> - 53</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/tomskaya_oblast" class="ahover">Томская область</a>
+<span class="cvet1"> - 7</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/tulskaya_oblast" class="ahover">Тульская область</a>
+<span class="cvet1"> - 27</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_tyva" class="ahover">Тыва республика</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/tyumenskaya_oblast" class="ahover">Тюменская область</a>
+<span class="cvet1"> - 16</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/udmurtskaya_respublika" class="ahover">Удмуртская республика</a>
+<span class="cvet1"> - 5</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/ulyanovskaya_oblast" class="ahover">Ульяновская область</a>
+<span class="cvet1"> - 5</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/khabarovskij_kraj" class="ahover">Хабаровский край</a>
+<span class="cvet1"> - 3</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_khakasiya" class="ahover">Хакасия республика</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/khanty_mansijskij_avtonomnyj_okrug" class="ahover">Ханты-Мансийский АО</a>
+<span class="cvet1"> - 22</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/chelyabinskaya_oblast" class="ahover">Челябинская область</a>
+<span class="cvet1"> - 40</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/chechenskaya_respublika" class="ahover">Чеченская республика</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/chuvashskaya_respublika" class="ahover">Чувашская республика</a>
+<span class="cvet1"> - 8</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/chukotskij_avtonomnyj_okrug" class="ahover">Чукотский автон. округ</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/respublika_sakha" class="ahover">Якутия респ. Саха</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/yamalo_nenetskij_avtonomnyj_okrug" class="ahover">Ямало-Ненецкий АО</a>
+<span class="cvet1"> - 6</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/yaroslavskaya_oblast" class="ahover">Ярославская область</a>
+<span class="cvet1"> - 66</span><br>
 				</div>
+
 				<div class="col-md-4">
-					<a href="#"> <p> testcity	</p> </a>
+					<h2 style="color:#808080;">Украина</h2><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/vinnitskaya_oblast" class="ahover">Винницкая область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/volynskaya_oblast" class="ahover">Волынская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/dnepropetrovskaya_oblast" class="ahover">Днепропетровская область</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/donetskaya_oblast" class="ahover">Донецкая область</a>
+<span class="cvet1"> - 4</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/zhitomirskaya_oblast" class="ahover">Житомирская область</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/zakarpatskaya_oblast" class="ahover">Закарпатская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/zaporozhskaya_oblast" class="ahover">Запорожская область</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/ivano_frankovskaya_oblast" class="ahover">Ивано-Франковская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kievskaya_oblast" class="ahover"><span style="font-size:20px;"><b>Киевская область</b></span></a>
+<span class="cvet1"> - 17</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kirovogradskaya_oblast" class="ahover">Кировоградская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/luganskaya_oblast" class="ahover">Луганская область</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/lvovskaya_oblast" class="ahover">Львовская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/nikolaevskaya_oblast" class="ahover">Николаевская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/odesskaya_oblast" class="ahover">Одесская область</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/poltavskaya_oblast" class="ahover">Полтавская область</a>
+<span class="cvet1"> - 13</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/rovnenskaya_oblast" class="ahover">Ровненская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/sumskaya_oblast" class="ahover">Сумская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/ternopolskaya_oblast" class="ahover">Тернопольская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/kharkovskaya_oblast" class="ahover">Харьковская область</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/khersonskaya_oblast" class="ahover">Херсонская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/khmelnitskaya_oblast" class="ahover">Хмельницкая область</a>
+<span class="cvet1"> - 2</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/cherkasskaya_oblast" class="ahover">Черкасская область</a>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/chernigovskaya_oblast" class="ahover">Черниговская область</a>
+<span class="cvet1"> - 1</span><br>
+<br><br>
+<h2 style="color:#808080;">Беларусь</h2>
+<br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/brestskaya_oblast" class="ahover">Брестская область</a>
+<span class="cvet1"> - 1</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/vitebskaya_oblast" class="ahover">Витебская область</a>
+<span class="cvet1"> - 6</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/gomelskaya_oblast" class="ahover">Гомельская область</a>
+<span class="cvet1"> - 8</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/grodnenskaya_oblast" class="ahover">Гродненская область</a>
+<span class="cvet1"> - 36</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/minskaya_oblast" class="ahover"><span style="font-size:20px;"><b>Минская область</b></span></a>
+<span class="cvet1"> - 22</span><br>
+&nbsp;<a href="http://goravtobaza.ru/regiony/mogilyevskaya_oblast" class="ahover">Могилёвская область</a>
+<span class="cvet1"> - 1</span><br>
 				</div>
 			</div>
 		</div>
@@ -164,7 +397,5 @@ require_once "vhod_proverka.php";
 		</span></p>    
 		</div>  
 	</footer>
-
-
 </body>
 </html>

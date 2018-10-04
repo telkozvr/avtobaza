@@ -1,4 +1,5 @@
 <?php 
+require_once "podklyuchenie_k_bd.php";
 /*
 		Если пользователь не авторизован (проверяем по сессии) -
 		тогда проверим его куки, если в куках есть логин и ключ,
@@ -13,35 +14,24 @@
 	*/
 	if (empty($_SESSION['auth']) or $_SESSION['auth'] == false) {
 		//Проверяем, не пустые ли нужные нам куки...
-		if ( !empty($_COOKIE['email']) and !empty($_COOKIE['key']) ) {
+		if ( !empty($_COOKIE['login']) and !empty($_COOKIE['key']) ) {
 			//Пишем логин и ключ из КУК в переменные (для удобства работы):
-			$email = $_COOKIE['email']; 
+			$login = $_COOKIE['login']; 
 			$key = $_COOKIE['key']; //ключ из кук (аналог пароля, в базе поле cookie)
-
-			/*
-				Формируем и отсылаем SQL запрос:
-				ВЫБРАТЬ ИЗ таблицы_users ГДЕ поле_логин = $email.
-			*/
-			$query = 'SELECT*FROM users WHERE user_email="'.$email.'" AND cookie="'.$key.'"';
-
+				//Формируем и отсылаем SQL запрос: ВЫБРАТЬ ИЗ таблицы_users ГДЕ поле_логин = $email.
+			$query = 'SELECT*FROM users WHERE user_email="'.$login.'" OR user_phone ="'.$login.'" AND cookie="'.$key.'"';
 			//Ответ базы запишем в переменную $result:
 			$result = mysqli_fetch_assoc(mysqli_query($link, $query)); 
-
 			//Если база данных вернула не пустой ответ - значит пара логин-ключ_к_кукам подошла...
 			if (!empty($result)) {
 				//Стартуем сессию:
 				session_start(); 
-
 				//Пишем в сессию информацию о том, что мы авторизовались:
 				$_SESSION['auth'] = true; 
-
-				/*
-					Пишем в сессию логин и id пользователя
-					(их мы берем из переменной $user!):
-				*/
-				$_SESSION['id'] = $result['id']; 
-				$_SESSION['email'] = $result['email']; 
-				header("Location: /index.html");
+					//Пишем в сессию логин и id пользователя 
+				$_SESSION['id'] = $result['user_id']; 
+				$_SESSION['login'] = $login; 
+				header("Location: /index.php");
 				//Тут можно добавить перезапись куки, см. ниже объяснение.
 			}
 		}

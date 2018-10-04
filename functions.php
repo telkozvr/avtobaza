@@ -43,7 +43,8 @@ function checkPhone(){
 	$phone = $_REQUEST["phone"]; //номер телефона из формы
     $phone = preg_replace('~[^0-9]+~','', $phone); //Удаляем из номера всё, кроме цифр
     $err = array(); // Массив для ошибок
-
+    $min_dlina_nomera = 10;
+    $max_dlina_nomera = 15;
 	//Проверка заполненности номера
 	if(!$phone) {
 		$err[] = "Введите номер телефона для дальнейшей регистрации";
@@ -53,6 +54,9 @@ function checkPhone(){
 	// Если число рядов идентичных user в базе больше 0, то такой юзер уже существует
 	if(mysqli_num_rows($phone_bd) > 0) {
 		$err[] = "Пользователь с таким номером уже существует в базе данных";
+	}
+	if(strlen($phone) < $min_dlina_nomera or strlen($phone) > $max_dlina_nomera){
+		$err[] = "Номер телефона должен быть не менее 10 и не более 15 символов";
 	}
 	return $err;
 }

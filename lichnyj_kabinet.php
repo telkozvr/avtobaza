@@ -1,6 +1,8 @@
-<?php 
+<?php
 session_start();
-require_once 'vihod.php';
+require_once "podklyuchenie_k_bd.php";
+require_once "dostup_k_LK.php";
+require_once "vihod.php";
 print_r($_SESSION);
 ?>
 
