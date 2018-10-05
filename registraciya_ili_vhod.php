@@ -22,19 +22,7 @@ if(!empty($_SESSION["auth"]) && $_SESSION["auth"] == true){
 <body>
 
   <!-- Навигация -->
-  <nav class="col-md-12">
-    <div class="container">
-      <div class="row">
-      <ul class="list-inline col-md-12">
-        <a href="http://goravtobaza.ru/index.php"><li "> <img class="offset-lg-0 offset-md-6 offset-sm-4 img-responsive" src="img/logo.png" alt="logo"></li></a>
-        <a href="http://goravtobaza.ru/index.php"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">Главная</li></a>
-        <a href="#"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">О проекте</li></a>
-        <a href="#"><li class="col-xl-2 col-lg-3 col-sm-12 offset-xl-0 offset-lg-5 btn btn-outline-light">Помощь</li></a>
-        <a href="http://goravtobaza.ru/registraciya_ili_vhod.php"><li class="col-xl-2 col-lg-3 col-sm-12 btn btn-outline-light">Подать объявление</li></a>
-      </ul>
-      </div>
-    </div>
-  </nav>
+<?php require_once "nav.php"; ?>
 
   <main>
     <div class="container">
@@ -143,16 +131,7 @@ if(!empty($_SESSION["auth"]) && $_SESSION["auth"] == true){
     </article>
   </div>
 
-  <footer>
-    <div class="container">
-      <p>&nbsp;&nbsp;©&nbsp;&nbsp;&nbsp;Copyright:&nbsp;<a href="http://goravtobaza.ru/" class="ahover1">GorAvtoBaza.ru</a>&nbsp;2014–2016&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <span> <a href="http://goravtobaza.ru/kontakty/send" class="ahover1">Контакты</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="http://goravtobaza.ru/soglashenie" class="ahover1">Условия использования</a>
-    </span></p>    
-    </div>  
-  </footer>
+<?php require_once "footer.php"; ?>
 
 <script type="text/javascript">
   //Если селект меняется

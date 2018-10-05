@@ -1,0 +1,56 @@
+/*Цвета */
+/* Заголовок */
+@header:#81000D;
+/* Фон */
+@background:#F2F2F2;
+/* Шрифт */
+@fontColor:#777777;
+
+/* Шрифты */
+@font-face{
+	font-family: 'Lucida Grande Bold';
+	src: url('fonts/Lucida Grande Bold.ttf') format('truetype');
+}
+@font-face{
+	font-family: 'Lucida Sans Unicode';
+	src: url('fonts/Lucida Sans Unicode.ttf') format('truetype');
+}
+.LucidaSans{
+	font-family: Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
+}
+
+.LucidaBold{
+	font-family: Lucida Grande, Helvetica, Arial, Verdana, sans-serif;
+	font-weight: bold;
+}
+/* Шрифт заголовков */
+h1, h2, h3, h4, h5, h6{
+	.LucidaBold;
+}
+
+/* Фоновый цвет сайта */
+body{
+	background-color: @background;
+}
+
+/* Навигация */
+nav{
+	background-color:@header;
+	div.container{
+		height: 100%;
+		ul{
+			margin-bottom: 0px;
+			padding-bottom: 1px;
+			display: inline-block;
+			li{
+				margin-top: 1px;
+				.LucidaSans;
+				font-size: 16px;
+				letter-spacing: -0.5px;
+				color:white;
+				display: inline-block;
+				text-decoration: none;
+			}
+		}
+	}
+}

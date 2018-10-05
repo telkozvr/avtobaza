@@ -3,15 +3,15 @@ session_start();
 require_once "podklyuchenie_k_bd.php";
 require_once "dostup_k_LK.php";
 require_once "vihod.php";
-print_r($_SESSION);
+//print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Личный кабинет</title>
-		  <link href="css/css/bootstrap.min.css" rel="stylesheet">
-	  <link rel="stylesheet" type="text/css" href="css/css/registraciya_ili_vhod.css">
+	<link href="css/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/css/lichnyi_kabinet.css" rel="stylesheet" type="text/css" >
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -20,8 +20,13 @@ print_r($_SESSION);
 </head>
 
 <body>
+
+	<?php require_once "nav.php"; ?>
+
+
 	<form method="POST">
 <input type="submit" name="vihod" value="Выйти">
 </form>
-<a href="index.php"> <p>Главная</p></a>
+
+	<?php require_once "footer.php"; ?>
 </body>
